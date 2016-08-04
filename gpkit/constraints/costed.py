@@ -19,9 +19,9 @@ class CostedConstraintSet(ConstraintSet):
             subs.update(substitutions)
         ConstraintSet.__init__(self, constraints, subs)
 
-    def subinplace(self, subs, value=None):
+    def subinplace(self, subs):
         "Substitutes in place."
-        self.cost = self.cost.sub(subs, value)
+        self.cost = self.cost.sub(subs)
         if hasattr(self, "unused_variables"):
             unused_vars = []
             for var in self.unused_variables:
@@ -30,7 +30,7 @@ class CostedConstraintSet(ConstraintSet):
                 else:
                     unused_vars.append(var.key)
             self.unused_variables = unused_vars
-        ConstraintSet.subinplace(self, subs, value)
+        ConstraintSet.subinplace(self, subs)
 
     def reset_varkeys(self, init_dict=None):
         "Resets varkeys to what is in the cost and constraints"

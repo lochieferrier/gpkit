@@ -127,10 +127,10 @@ class ConstraintSet(list):
                 for yielded_constraint in subgenerator:
                     yield yielded_constraint
 
-    def subinplace(self, subs, value=None):
+    def subinplace(self, subs):
         "Substitutes in place."
         for constraint in self:
-            constraint.subinplace(subs, value)
+            constraint.subinplace(subs)
 
     def reset_varkeys(self, init_dict=None):
         "Goes through constraints and collects their varkeys."
